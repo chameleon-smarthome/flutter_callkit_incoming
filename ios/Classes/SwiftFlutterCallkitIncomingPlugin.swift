@@ -423,6 +423,8 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
     }
     
     public func provider(_ provider: CXProvider, perform action: CXSetMutedCallAction) {
+        action.fail()
+        return
         guard let call = self.callManager?.callWithUUID(uuid: action.callUUID) else {
             action.fail()
             return
