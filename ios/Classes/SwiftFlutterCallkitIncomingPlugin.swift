@@ -390,9 +390,22 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
         }
         self.answerCall = call
         sendEvent(SwiftFlutterCallkitIncomingPlugin.ACTION_CALL_ACCEPT, self.data?.toJSON())
+        if call.data.supportsVideo && call.data.type > 0 {
+            self.fulfillAnswer(action: action, seconds: 10)
+            return
+        }
         action.fulfill()
     }
-    
+
+    private func fulfillAnswer(action: CXAnswerCallAction, seconds: Double) {
+        if seconds == 0 || UIApplication.shared.isProtectedDataAvailable {
+            action.fulfill()
+            return
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.fulfillAnswer(action: action, seconds: seconds - 1)
+        }
+    }
 
     public func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
         guard let call = self.callManager?.callWithUUID(uuid: action.callUUID) else {
