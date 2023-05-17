@@ -390,21 +390,40 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
         }
         self.answerCall = call
         sendEvent(SwiftFlutterCallkitIncomingPlugin.ACTION_CALL_ACCEPT, self.data?.toJSON())
-        if call.data.supportsVideo && call.data.type > 0 {
-            self.fulfillAnswer(action: action, seconds: 10)
-            return
-        }
-        action.fulfill()
+        self.fulfillAnswer(action: action, call: call)
     }
 
-    private func fulfillAnswer(action: CXAnswerCallAction, seconds: Double) {
-        if seconds == 0 || UIApplication.shared.isProtectedDataAvailable {
+    private func fulfillAnswer(action: CXAnswerCallAction, call: Call) {
+        let onLockscreen = call.data.extra["onLockscreen"] as? String == "1"
+        if !onLockscreen || !(call.data.supportsVideo && call.data.type > 0) {
             action.fulfill()
             return
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.fulfillAnswer(action: action, seconds: seconds - 1)
+
+        var token : NSObjectProtocol?
+        let noti = UIApplication.protectedDataDidBecomeAvailableNotification
+        token = NotificationCenter.default.addObserver(forName: noti, object: nil, queue: nil) {(notif) in
+            NotificationCenter.default.removeObserver(token)
+            action.fulfill()
+            token = nil
         }
+
+        var tick : ((Double) -> Void)?
+        tick = {(counter) -> Void in
+            if token == nil {
+                return
+            }
+            if counter == 0 {
+                NotificationCenter.default.removeObserver(token)
+                action.fulfill()
+                return
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                tick?(counter - 1)
+            }
+        }
+
+        tick?(15)
     }
 
     public func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
