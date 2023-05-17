@@ -62,7 +62,6 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
     public static func register(with registrar: FlutterPluginRegistrar) {
         let instance = sharePluginWithRegister(with: registrar)
         registrar.addMethodCallDelegate(instance, channel: instance.channel!)
-        subscribeProtectedDataNotifications()
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -399,7 +398,7 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
     }
 
     private func fulfillAnswer(action: CXAnswerCallAction, seconds: Double) {
-        if seconds == 0 || !isScreenLocked {
+        if seconds == 0 || UIApplication.shared.isProtectedDataAvailable {
             action.fulfill()
             return
         }
@@ -541,16 +540,5 @@ class EventCallbackHandler: FlutterStreamHandler {
     func onCancel(withArguments arguments: Any?) -> FlutterError? {
         self.eventSink = nil
         return nil
-    }
-}
-
-private var isScreenLocked = false
-func subscribeProtectedDataNotifications() {
-    isScreenLocked = !UIApplication.shared.isProtectedDataAvailable
-    NotificationCenter.default.addObserver(forName: UIApplication.protectedDataDidBecomeAvailableNotification, object: nil, queue: nil) {_ in
-        isScreenLocked = false
-    }
-    NotificationCenter.default.addObserver(forName: UIApplication.protectedDataWillBecomeUnavailableNotification, object: nil, queue: nil) {_ in
-        isScreenLocked = true
     }
 }
