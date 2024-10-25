@@ -14,10 +14,8 @@ IOSParams _$IOSParamsFromJson(Map<String, dynamic> json) => IOSParams(
       maximumCallsPerCallGroup: json['maximumCallsPerCallGroup'] as int?,
       audioSessionMode: json['audioSessionMode'] as String?,
       audioSessionActive: json['audioSessionActive'] as bool?,
-      audioSessionPreferredSampleRate:
-          (json['audioSessionPreferredSampleRate'] as num?)?.toDouble(),
-      audioSessionPreferredIOBufferDuration:
-          (json['audioSessionPreferredIOBufferDuration'] as num?)?.toDouble(),
+      audioSessionPreferredSampleRate: (json['audioSessionPreferredSampleRate'] as num?)?.toDouble(),
+      audioSessionPreferredIOBufferDuration: (json['audioSessionPreferredIOBufferDuration'] as num?)?.toDouble(),
       configureAudioSession: json['configureAudioSession'] as bool?,
       supportsDTMF: json['supportsDTMF'] as bool?,
       supportsHolding: json['supportsHolding'] as bool?,
@@ -34,10 +32,8 @@ Map<String, dynamic> _$IOSParamsToJson(IOSParams instance) => <String, dynamic>{
       'maximumCallsPerCallGroup': instance.maximumCallsPerCallGroup,
       'audioSessionMode': instance.audioSessionMode,
       'audioSessionActive': instance.audioSessionActive,
-      'audioSessionPreferredSampleRate':
-          instance.audioSessionPreferredSampleRate,
-      'audioSessionPreferredIOBufferDuration':
-          instance.audioSessionPreferredIOBufferDuration,
+      'audioSessionPreferredSampleRate': instance.audioSessionPreferredSampleRate,
+      'audioSessionPreferredIOBufferDuration': instance.audioSessionPreferredIOBufferDuration,
       'configureAudioSession': instance.configureAudioSession,
       'supportsDTMF': instance.supportsDTMF,
       'supportsHolding': instance.supportsHolding,

@@ -10,6 +10,6 @@
 
 @implementation FlutterCallkitIncomingPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  [SwiftFlutterCallkitIncomingPlugin registerWithRegistrar:registrar];
+    [SwiftFlutterCallkitIncomingPlugin registerWithRegistrar:registrar];
 }
 @end

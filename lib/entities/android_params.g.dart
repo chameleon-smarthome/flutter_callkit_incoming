@@ -6,8 +6,7 @@ part of 'android_params.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AndroidParams _$AndroidParamsFromJson(Map<String, dynamic> json) =>
-    AndroidParams(
+AndroidParams _$AndroidParamsFromJson(Map<String, dynamic> json) => AndroidParams(
       isCustomNotification: json['isCustomNotification'] as bool?,
       isCustomSmallExNotification: json['isCustomSmallExNotification'] as bool?,
       isShowLogo: json['isShowLogo'] as bool?,
@@ -17,17 +16,14 @@ AndroidParams _$AndroidParamsFromJson(Map<String, dynamic> json) =>
       backgroundUrl: json['backgroundUrl'] as String?,
       actionColor: json['actionColor'] as String?,
       textColor: json['textColor'] as String?,
-      incomingCallNotificationChannelName:
-          json['incomingCallNotificationChannelName'] as String?,
-      missedCallNotificationChannelName:
-          json['missedCallNotificationChannelName'] as String?,
+      incomingCallNotificationChannelName: json['incomingCallNotificationChannelName'] as String?,
+      missedCallNotificationChannelName: json['missedCallNotificationChannelName'] as String?,
       isShowFullLockedScreen: json['isShowFullLockedScreen'] as bool?,
       isImportant: json['isImportant'] as bool?,
       isBot: json['isBot'] as bool?,
     );
 
-Map<String, dynamic> _$AndroidParamsToJson(AndroidParams instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AndroidParamsToJson(AndroidParams instance) => <String, dynamic>{
       'isCustomNotification': instance.isCustomNotification,
       'isCustomSmallExNotification': instance.isCustomSmallExNotification,
       'isShowLogo': instance.isShowLogo,
@@ -37,10 +33,8 @@ Map<String, dynamic> _$AndroidParamsToJson(AndroidParams instance) =>
       'backgroundUrl': instance.backgroundUrl,
       'actionColor': instance.actionColor,
       'textColor': instance.textColor,
-      'incomingCallNotificationChannelName':
-          instance.incomingCallNotificationChannelName,
-      'missedCallNotificationChannelName':
-          instance.missedCallNotificationChannelName,
+      'incomingCallNotificationChannelName': instance.incomingCallNotificationChannelName,
+      'missedCallNotificationChannelName': instance.missedCallNotificationChannelName,
       'isShowFullLockedScreen': instance.isShowFullLockedScreen,
       'isImportant': instance.isImportant,
       'isBot': instance.isBot,

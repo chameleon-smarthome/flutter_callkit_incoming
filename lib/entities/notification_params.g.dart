@@ -6,8 +6,7 @@ part of 'notification_params.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-NotificationParams _$NotificationParamsFromJson(Map<String, dynamic> json) =>
-    NotificationParams(
+NotificationParams _$NotificationParamsFromJson(Map<String, dynamic> json) => NotificationParams(
       id: json['id'] as int?,
       showNotification: json['showNotification'] as bool?,
       subtitle: json['subtitle'] as String?,
@@ -16,8 +15,7 @@ NotificationParams _$NotificationParamsFromJson(Map<String, dynamic> json) =>
       count: json['count'] as int?,
     );
 
-Map<String, dynamic> _$NotificationParamsToJson(NotificationParams instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$NotificationParamsToJson(NotificationParams instance) => <String, dynamic>{
       'id': instance.id,
       'showNotification': instance.showNotification,
       'subtitle': instance.subtitle,

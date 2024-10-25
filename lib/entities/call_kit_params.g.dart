@@ -6,8 +6,7 @@ part of 'call_kit_params.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CallKitParams _$CallKitParamsFromJson(Map<String, dynamic> json) =>
-    CallKitParams(
+CallKitParams _$CallKitParamsFromJson(Map<String, dynamic> json) => CallKitParams(
       id: json['id'] as String?,
       nameCaller: json['nameCaller'] as String?,
       appName: json['appName'] as String?,
@@ -18,22 +17,14 @@ CallKitParams _$CallKitParamsFromJson(Map<String, dynamic> json) =>
       duration: json['duration'] as int?,
       textAccept: json['textAccept'] as String?,
       textDecline: json['textDecline'] as String?,
-      missedCallNotification: json['missedCallNotification'] == null
-          ? null
-          : NotificationParams.fromJson(
-              json['missedCallNotification'] as Map<String, dynamic>),
+      missedCallNotification: json['missedCallNotification'] == null ? null : NotificationParams.fromJson(json['missedCallNotification'] as Map<String, dynamic>),
       extra: json['extra'] as Map<String, dynamic>?,
       headers: json['headers'] as Map<String, dynamic>?,
-      android: json['android'] == null
-          ? null
-          : AndroidParams.fromJson(json['android'] as Map<String, dynamic>),
-      ios: json['ios'] == null
-          ? null
-          : IOSParams.fromJson(json['ios'] as Map<String, dynamic>),
+      android: json['android'] == null ? null : AndroidParams.fromJson(json['android'] as Map<String, dynamic>),
+      ios: json['ios'] == null ? null : IOSParams.fromJson(json['ios'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CallKitParamsToJson(CallKitParams instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CallKitParamsToJson(CallKitParams instance) => <String, dynamic>{
       'id': instance.id,
       'nameCaller': instance.nameCaller,
       'appName': instance.appName,
