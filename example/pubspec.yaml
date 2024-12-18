@@ -6,7 +6,8 @@ description: Demonstrates how to use the flutter_callkit_incoming plugin.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=3.5.0 <4.0.0"
+  flutter: ">=3.24.0"
 
 dependencies:
   flutter:
@@ -14,7 +15,7 @@ dependencies:
 
   flutter_callkit_incoming:
     # When depending on this package from a real application you should use:
-    #   flutter_callkit_incoming: ^x.y.z
+    #   flutter_callkit_incoming: x.y.z
     # See https://dart.dev/tools/pub/dependencies#version-constraints
     # The example app is bundled with the plugin so we use a path dependency on
     # the parent directory to use the current plugin's version.
@@ -22,12 +23,12 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  uuid: 3.0.5
-  firebase_messaging: 11.2.6
-  firebase_core: ^1.17.0
-  firebase_messaging_platform_interface: 3.5.0
-  http: ^0.13.4
+  cupertino_icons: 1.0.8
+  uuid: 4.5.1
+  firebase_messaging: 15.1.6
+  firebase_core: 3.8.1
+  firebase_messaging_platform_interface: 4.5.49
+  http: 1.2.2
 
 dev_dependencies:
   flutter_test:
